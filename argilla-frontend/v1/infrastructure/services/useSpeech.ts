@@ -1,5 +1,3 @@
-import { ref } from "vue";
-
 declare global {
   interface Window {
     SpeechRecognition: any;
@@ -7,10 +5,31 @@ declare global {
   }
 }
 
-type Commands = "OpenDatasets";
+import wordsToNumbers from "words-to-numbers";
 
-const sanitizeCommand = {
-  OpenDatasets: { trigger: "open data sets" },
+type Commands = "OpenDatasets" | "SelectOption" | "Submit";
+
+const sanitizeCommand: Record<
+  Commands,
+  {
+    triggers: string[];
+    handleParams?: (text: string) => null | unknown;
+  }
+> = {
+  OpenDatasets: { triggers: ["open data sets"] },
+  SelectOption: {
+    triggers: ["select option", "select label", "select"],
+    handleParams: (text) => {
+      const params = text.split(" ").pop();
+
+      const converted = wordsToNumbers(params);
+
+      if (isNaN(Number(converted))) return null;
+
+      return parseInt(converted as string);
+    },
+  },
+  Submit: { triggers: ["submit", "submit this record", "submit record"] },
 };
 
 type Collector = (text: string) => void;
@@ -35,12 +54,17 @@ class Recognition {
       const sanitized = result.transcript.trim().toLowerCase();
 
       if (this.lastTranscript !== sanitized) {
+        console.log("Listening: ", sanitized);
         this.lastTranscript = sanitized;
 
         this.collectors.forEach((collect) => {
           collect(this.lastTranscript);
         });
       }
+
+      setTimeout(() => {
+        this.lastTranscript = "";
+      }, 1000);
     };
   }
 
@@ -99,26 +123,44 @@ export const useSpeech = () => {
 
   const explainCommands = () => {
     const currentCommands = Object.keys(sanitizeCommand).map(
-      (key) => sanitizeCommand[key].trigger
+      (key) => sanitizeCommand[key].triggers
     );
 
     recognition.speak(`This is our commands: ${currentCommands.join(", ")}`);
   };
 
-  const waitCommands = (commands: Record<Commands, () => void>) => {
-    recognition.listen((text: string) => {
+  const waitCommands = (
+    commands: Partial<Record<Commands, (params: any) => void>>
+  ) => {
+    const commandHandler = (text: string) => {
       if (text === "what can i do") {
         explainCommands();
       }
 
       const command = Object.keys(commands).find((key) =>
-        text.includes(sanitizeCommand[key]?.trigger)
+        sanitizeCommand[key].triggers.some((trigger) => text.includes(trigger))
       );
+
+      if (sanitizeCommand[command]?.handleParams) {
+        const params = sanitizeCommand[command]?.handleParams(text);
+
+        if (command && params) {
+          commands[command](params);
+        }
+
+        return;
+      }
 
       if (command) {
         commands[command]();
       }
-    });
+    };
+
+    recognition.listen(commandHandler);
+
+    return () => {
+      recognition.ignore(commandHandler);
+    };
   };
 
   return {

@@ -83,20 +83,7 @@ export const useHomeViewModel = () => {
     speech.explainCommands();
   });
 
-  const listen = async () => {
-    speech.speechCollect((text: string) => {
-      speech.textToSpeech(text);
-    });
-
-    speech.waitCommands({
-      OpenDatasets: () => {
-        console.log("go to datasets");
-      },
-    });
-  };
-
   return {
-    listen,
     speech,
     datasets,
     workspaces,
