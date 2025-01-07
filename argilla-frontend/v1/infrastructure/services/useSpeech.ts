@@ -10,7 +10,7 @@ declare global {
 type Commands = "OpenDatasets";
 
 const sanitizeCommand = {
-  OpenDatasets: { trigger: "open data set" },
+  OpenDatasets: { trigger: "open data sets" },
 };
 
 type Collector = (text: string) => void;
@@ -112,7 +112,7 @@ export const useSpeech = () => {
       }
 
       const command = Object.keys(commands).find((key) =>
-        text.includes(sanitizeCommand[key])
+        text.includes(sanitizeCommand[key]?.trigger)
       );
 
       if (command) {
