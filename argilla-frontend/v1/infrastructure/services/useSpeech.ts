@@ -147,7 +147,6 @@ export const useSpeech = () => {
         if (command && params) {
           commands[command](params);
         }
-
         return;
       }
 
