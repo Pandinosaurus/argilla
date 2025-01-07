@@ -1,11 +1,12 @@
+// eslint-disable-next-line import/no-named-as-default
+import wordsToNumbers from "words-to-numbers";
+
 declare global {
   interface Window {
     SpeechRecognition: any;
     webkitSpeechRecognition: any;
   }
 }
-
-import wordsToNumbers from "words-to-numbers";
 
 type Commands = "OpenDatasets" | "SelectOption" | "Submit";
 
@@ -54,6 +55,7 @@ class Recognition {
       const sanitized = result.transcript.trim().toLowerCase();
 
       if (this.lastTranscript !== sanitized) {
+        // eslint-disable-next-line no-console
         console.log("Listening: ", sanitized);
         this.lastTranscript = sanitized;
 
@@ -72,6 +74,7 @@ class Recognition {
     const utterance = new SpeechSynthesisUtterance(text);
     this.speaker.speak(utterance);
 
+    // eslint-disable-next-line no-console
     console.log("Speaking: ", text);
   }
 
@@ -100,6 +103,7 @@ class Recognition {
     this.listener.stop();
   }
 
+  // eslint-disable-next-line no-use-before-define
   private static recognitionInstance: Recognition;
   static create() {
     if (!this.recognitionInstance) {
@@ -113,7 +117,7 @@ class Recognition {
 export const useSpeech = () => {
   const recognition = Recognition.create();
 
-  const textToSpeech = async (text: string) => {
+  const textToSpeech = (text: string) => {
     recognition.speak(text);
   };
 
