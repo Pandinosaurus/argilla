@@ -2828,6 +2828,7 @@ Argilla server with <code>ARGILLA_BASE_URL=/custom-path-for-argilla</code>.</p>
 <p>Redis is used by Argilla to store information about jobs to be processed on background. The following environment variables are useful to config how Argilla connects to Redis:</p>
 <ul>
 <li><code>ARGILLA_REDIS_URL</code>: A URL string that contains the necessary information to connect to a Redis instance (Default: <code>redis://localhost:6379/0</code>).</li>
+<li><code>ARGILLA_REDIS_USE_CLUSTER</code>: If "True" tries the connection with the URL to a  Redis Cluster instead of a Redis Standalone instance.</li>
 </ul>
 <h3 id="datasets">Datasets<a class="headerlink" href="#datasets" title="Permanent link">&para;</a></h3>
 <ul>
