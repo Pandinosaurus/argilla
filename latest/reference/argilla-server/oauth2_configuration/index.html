@@ -2056,6 +2056,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#adding-more-oauth2-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding more OAuth2 providers
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2568,6 +2577,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#adding-more-oauth2-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding more OAuth2 providers
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2714,28 +2732,21 @@ define the following fields in the <code>.oauth.yml</code> file:</p>
 <p>Since Keycloak backend uses the Open ID Connect protocol, you probably need to setup the OIDC endpoint in the environment 
 variables:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SOCIAL_AUTH_KEYCLOAK_OIDC_ENDPOINT</span><span class="o">=</span>&lt;keycloak-server&gt;/realms/&lt;configured-realm&gt;
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1">### Adding more OAuth2 providers</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>If<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>add<span class="w"> </span>more<span class="w"> </span>OAuth2<span class="w"> </span>providers<span class="w"> </span>that<span class="w"> </span>are<span class="w"> </span>not<span class="w"> </span>supported<span class="w"> </span>by<span class="w"> </span>default,<span class="w"> </span>you<span class="w"> </span>can<span class="w"> </span><span class="k">do</span><span class="w"> </span>so<span class="w"> </span>by<span class="w"> </span>adding<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>provider
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>configuration<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span><span class="sb">`</span>.oauth.yml<span class="sb">`</span><span class="w"> </span>file.<span class="w"> </span>The<span class="w"> </span>Argilla<span class="w"> </span>server<span class="w"> </span>uses<span class="w"> </span>the<span class="w"> </span><span class="o">[</span>Social<span class="w"> </span>Auth<span class="w"> </span>backends<span class="o">](</span>https://python-social-auth.readthedocs.io/en/latest/backends/index.html<span class="o">)</span><span class="w"> </span>component<span class="w"> </span>to<span class="w"> </span>define
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>the<span class="w"> </span>provider<span class="w"> </span>configuration.<span class="w"> </span>You<span class="w"> </span>only<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>register<span class="w"> </span>the<span class="w"> </span>provider<span class="w"> </span>backend<span class="w"> </span>using<span class="w"> </span>the<span class="w"> </span><span class="sb">`</span>extra_backends<span class="sb">`</span><span class="w"> </span>key<span class="w"> </span><span class="k">in</span>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>the<span class="w"> </span><span class="sb">`</span>.oauth.yml<span class="sb">`</span><span class="w"> </span>file.
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>For<span class="w"> </span>example,<span class="w"> </span>to<span class="w"> </span>configure<span class="w"> </span>the<span class="w"> </span><span class="o">[</span>Apple<span class="w"> </span>OAuth2<span class="w"> </span>provider<span class="o">](</span>https://python-social-auth.readthedocs.io/en/latest/backends/apple.html<span class="o">)</span>,<span class="w"> </span>you<span class="w"> </span>should<span class="w"> </span>add<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>configuration<span class="w"> </span>to
-</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>the<span class="w"> </span><span class="sb">`</span>.oauth.yml<span class="sb">`</span><span class="w"> </span>file:
-</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
-</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="sb">```</span>yaml
-</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
-</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>providers:
-</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">  </span>-<span class="w"> </span>name:<span class="w"> </span>apple-id
-</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">    </span>client_id:<span class="w"> </span><span class="s2">&quot;&lt;client_id&gt;&quot;</span><span class="w"> </span><span class="c1"># You can use the ARGILLA_OAUTH2_APPLE_ID_CLIENT_ID environment variable</span>
-</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span>client_secret:<span class="w"> </span><span class="s2">&quot;&lt;client_secret&gt;&quot;</span><span class="w"> </span><span class="c1"># You can use the ARGILLA_OAUTH2_APPLE_ID_CLIENT_SECRET environment variable</span>
-</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>
-</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>extra_backends:
-</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">    </span>-<span class="w"> </span>social_core.backends.apple.AppleIdAuth<span class="w"> </span><span class="c1"># Register the Apple OAuth2 provider backend</span>
+</span></code></pre></div>
+<h3 id="adding-more-oauth2-providers">Adding more OAuth2 providers<a class="headerlink" href="#adding-more-oauth2-providers" title="Permanent link">&para;</a></h3>
+<p>If you want to add more OAuth2 providers that are not supported by default, you can do so by adding a new provider
+configuration to the <code>.oauth.yml</code> file. The Argilla server uses the <a href="https://python-social-auth.readthedocs.io/en/latest/backends/index.html">Social Auth backends</a> component to define
+the provider configuration. You only need to register the provider backend using the <code>extra_backends</code> key in
+the <code>.oauth.yml</code> file.</p>
+<p>For example, to configure the <a href="https://python-social-auth.readthedocs.io/en/latest/backends/apple.html">Apple OAuth2 provider</a>, you should add the following configuration to
+the <code>.oauth.yml</code> file:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">providers</span><span class="p">:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apple-id</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">client_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;client_id&gt;&quot;</span><span class="w"> </span><span class="c1"># You can use the ARGILLA_OAUTH2_APPLE_ID_CLIENT_ID environment variable</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nt">client_secret</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;client_secret&gt;&quot;</span><span class="w"> </span><span class="c1"># You can use the ARGILLA_OAUTH2_APPLE_ID_CLIENT_SECRET environment variable</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nt">extra_backends</span><span class="p">:</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">social_core.backends.apple.AppleIdAuth</span><span class="w"> </span><span class="c1"># Register the Apple OAuth2 provider backend</span>
 </span></code></pre></div>
 <p>All the <code>SOCIAL_AUTH_*</code> environment variables are supported by the Argilla server, so you can customize the provider
 configuration using these environment variables.</p>
