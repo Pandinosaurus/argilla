@@ -26,6 +26,11 @@ providers:
   - name: github
     client_id: "<client_id>"
     client_secret: "<client_secret>"
+    
+  - name: keycloack
+    client_id: "<client_id>"
+    client_secret: "<client_secret>"
+    
 
 allowed_workspaces:
   - name: argilla
@@ -136,6 +141,29 @@ providers:
 ```
 
 To get your client ID and client secret, you need to create a new [OAuth2 client](https://console.cloud.google.com/apis/credentials/oauthclient) in the Google Cloud Console.
+
+
+### Keycloak OAuth2 configuration
+
+Argilla also supports Keycloak OAuth2 authentication out of the box. To configure the Keycloak OAuth2 provider, you should
+define the following fields in the `.oauth.yml` file:
+
+```yaml
+providers:
+  - name: keycloak
+    client_id: "<client_id>" # You can use the ARGILLA_OAUTH2_KEYCLOAK_CLIENT_ID environment variable
+    client_secret: "<client_secret>" # You can use the ARGILLA_OAUTH2_KEYCLOAK_CLIENT_SECRET environment variable
+```
+
+To get your client ID and client secret, you need to create a new client in the Keycloak settings page.
+
+Since Keycloak backend uses the Open ID Connect protocol, you probably need to setup the OIDC endpoint in the environment 
+variables:
+
+```bash
+export SOCIAL_AUTH_KEYCLOAK_OIDC_ENDPOINT=<keycloak-server>/realms/<configured-realm>
+
+
 
 ### Adding more OAuth2 providers
 
