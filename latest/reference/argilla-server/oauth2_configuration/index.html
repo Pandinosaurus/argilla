@@ -2729,7 +2729,7 @@ define the following fields in the <code>.oauth.yml</code> file:</p>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nt">client_secret</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;client_secret&gt;&quot;</span><span class="w"> </span><span class="c1"># You can use the ARGILLA_OAUTH2_KEYCLOAK_CLIENT_SECRET environment variable</span>
 </span></code></pre></div>
 <p>To get your client ID and client secret, you need to create a new client in the Keycloak settings page.</p>
-<p>Since Keycloak backend uses the Open ID Connect protocol, you probably need to setup the OIDC endpoint in the environment 
+<p>Since Keycloak backend uses the Open ID Connect protocol, you probably need to setup the OIDC endpoint in the environment
 variables:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SOCIAL_AUTH_KEYCLOAK_OIDC_ENDPOINT</span><span class="o">=</span>&lt;keycloak-server&gt;/realms/&lt;configured-realm&gt;
 </span></code></pre></div>
