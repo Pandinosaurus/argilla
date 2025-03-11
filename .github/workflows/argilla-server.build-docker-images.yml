@@ -16,7 +16,7 @@ on:
 jobs:
   build:
     name: Build Argilla server docker images
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04 # The latest version ends with an memory error
 
     steps:
       - uses: actions/checkout@v4
