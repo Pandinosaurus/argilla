@@ -1,5 +1,6 @@
 > [!IMPORTANT]  
-The original authors have moved on to other projects. While the code might still be functional for its original purpose, please be aware that the original team does not plan to develop new features, bug fixes, or updates. If you'd like to become a maintainer, please open an issue to discuss it.
+The original authors have moved on to exciting new projects! The codebase is mature and stable, having served users reliably for years. While we won't be adding new features going forward, we're committed to solve bug fixes and publish patches as needed.
+If you're interested in helping maintain or extend this project, we'd love to hear from you! Please open an issue to discuss becoming a maintainer - we're looking for dedicated contributors who can take ownership of the project's future development.
 > 
 <h1 align="center">
   <a href=""><img src="https://github.com/dvsrepo/imgs/raw/main/rg.svg" alt="Argilla" width="150"></a>
